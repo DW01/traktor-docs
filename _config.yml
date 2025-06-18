@@ -6,3 +6,8 @@ color_scheme: dark
 nav_sort: case_sensitive
 search_enabled: true
 permalink: pretty
+
+just_the_docs:
+  collections:
+    pages:
+      output: true
