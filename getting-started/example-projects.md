@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /getting-started/example-projects/
 title: Example Projects
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /
 title: About Traktor
 ---
 
