@@ -1,9 +1,6 @@
 title: Traktor Documentation
-theme: just-the-docs
-color_scheme: light
-
-# Enable GitHub Pages support
 remote_theme: just-the-docs/just-the-docs
+color_scheme: light
 
 # Navigation structure
 nav_sort: case_sensitive
