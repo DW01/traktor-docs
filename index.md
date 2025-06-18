@@ -1,7 +1,6 @@
 ---
 layout: default
 title: About Traktor
-nav_order: 1
 ---
 
 
@@ -59,6 +58,3 @@ The runtime is a lightweight standalone application that loads scenes, stages, a
 - UI scaling issues on high-DPI screens
 - Some features (e.g. Theater) lack UI support
 
----
-
-Next: [Getting Started](getting-started.md)
