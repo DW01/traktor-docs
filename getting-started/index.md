@@ -2,6 +2,7 @@
 layout: default
 permalink: /getting-started/
 title: Getting Started
+nav_order: 2
 ---
 
 ## Getting Traktor

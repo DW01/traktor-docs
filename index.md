@@ -2,6 +2,7 @@
 layout: default
 permalink: /
 title: About Traktor
+nav_order: 1
 ---
 
 
