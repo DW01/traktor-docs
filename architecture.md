@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Engine Architecture
 nav_order: 2
 ---
