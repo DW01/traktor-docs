@@ -7,26 +7,35 @@ nav_order: 1
 
 # Getting Started with Traktor
 
-Welcome to Traktor — a modular, data-driven C++ game engine built for high-performance real-time applications.
+Welcome to Traktor — a modular, C++ game engine built for high-performance real-time applications.
 
-Traktor includes its own custom editor, rendering pipelines, animation and audio systems, UI toolkits, and a full asset build pipeline. It is designed with flexibility and extensibility in mind, supporting both 2D and 3D development across multiple platforms.
-
----
-
-## 🌟 Key Features
-
-- 🔧 **Powerful Editor** – Built-in editor with live asset previews, in-game UI editing, and scene management.
-- 🎮 **Runtime Engine** – High-performance ECS-based engine runtime.
-- 🎨 **Flexible Rendering** – Forward, deferred, and simple rendering pipelines with Vulkan backend.
-- 📦 **Asset Pipeline** – Data-driven workflow with content processing and asset caching via Avalanche.
-- 🧩 **Modular Design** – Each system (UI, sound, animation, etc.) is implemented as an independent module.
-- 🎭 **In-Game UI** – Scalable vector UI via `UiKit`, inspired by Flash but tailored for games.
-
-> Traktor is developed and maintained by [@apistol78](https://github.com/apistol78) and is open source under the MPL license.
+Traktor isn't just another game engine; it's a meticulously crafted toolkit designed for optimal performance and flexibility.
+Here's why it stands out:
+- **Lean and Well-Designed:** - Each module boasts clean responsibilities, ensuring an elegant and efficient codebase.
+- **Minimal Footprint: Traktor** - prioritizes low memory and storage usage, ensuring streamlined performance.
+- **Optimized for Efficiency:** - Utilizing modern rendering techniques and efficient algorithms, Traktor delivers exceptional performance.
+- **Tailored Flexibility:** - Unlike bloated, one-size-fits-all engines, Traktor is customizable to fit the unique needs of every project.
 
 ---
 
-## 🧭 Editor and Runtime
+## Supported Platforms
+
+Traktor currently offers full support for Windows and Linux platforms. While mobile versions for Android and iOS are available, they are not officially tested but are regularly updated to maintain compatibility.
+
+## Key Features
+
+- **Powerful Editor** – Built-in editor with live asset previews, in-game UI editing, and scene management.
+- **Runtime Engine** – High-performance modular engine runtime.
+- **Flexible Rendering** – Forward, deferred, and simple rendering pipelines with Vulkan backend.
+- **Asset Pipeline** – Data-driven workflow with content processing and asset caching via Avalanche.
+- **Modular Design** – Each system (UI, sound, animation, etc.) is implemented as an independent module.
+- **In-Game UI** – Scalable vector UI via `UiKit`, inspired by Flash but tailored for games.
+
+Traktor is developed and maintained by [@apistol78](https://github.com/apistol78) and is open source under the MPL license.
+
+---
+
+## Editor and Runtime
 
 ### Traktor Editor
 The editor is a standalone application that allows you to:
@@ -42,7 +51,7 @@ The runtime is a lightweight standalone application that loads scenes, stages, a
 
 ---
 
-## 📥 Getting Traktor
+## Getting Traktor
 
 ### 1. Clone the Repository
 ```bash
@@ -67,10 +76,10 @@ bin/latest/win64/DebugShared/Traktor.Editor.App.exe
 
 ---
 
-## 📦 Example Projects
+## Example Projects
 
-- `Kartong` – First-person cardboard-themed shooter
-- `Kobolt` – Experimental mini project
+- [Kartong](https://github.com/apistol78/kartong) – Simple split screen Mario Kart inspired game.
+- [Kobolt](https://github.com/apistol78/kobolt) – Simple multiplayer shooter
 
 ---
 
