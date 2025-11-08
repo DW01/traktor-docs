@@ -1,37 +1,37 @@
 ---
 layout: default
+permalink: /manual/
 title: Manual
-nav_order: 4
+nav_order: 3
+has_children: true
 ---
 
-# Manual
+# Traktor Manual
 
-## Editor
+Comprehensive documentation for the Traktor engine and editor.
 
-## AI/Navigation
+## [Engine](engine/)
 
-## Animation
+Learn about the Traktor engine's core systems and how to use them in your games:
 
-## Input
+- Architecture and design principles
+- Runtime system and application structure
+- World and entity-component system
+- Physics simulation
+- Scripting with Lua
+- Rendering system
+- Animation
+- Audio
+- AI and pathfinding
+- And more...
 
-## Networking
+## [Editor](editor/)
 
-## Physics
+Master the Traktor editor tools and workflows:
 
-## UI
-
-## Graphics
-
-## Scene
-
-## World
-
-## Scripting
-
-## Audio
-
-## Terrain
-
-## Scene Animations
-
-## Database
+- Interface overview
+- Database and asset management
+- Scene editor
+- Shader graph
+- Pipeline system
+- Deployment and targets

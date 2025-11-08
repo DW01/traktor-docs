@@ -126,11 +126,16 @@ Raw Assets → Editor Asset Database → Built Runtime Assets → Packaged Game
 
 This modular, layered architecture makes Traktor flexible, extensible, and easy to port or scale across projects and platforms.
 
+---
 
-## Resources
+## Learn More
 
-## Runtime
+For a comprehensive deep dive into Traktor's architecture, including:
+- Object system and reference counting
+- Module dependencies
+- Memory management
+- Multithreading and job system
+- Plugin architecture
+- Coding conventions
 
-### Stages
-
-### Layers
+See the [Engine Architecture Manual](manual/engine/architecture/).
