@@ -9,6 +9,8 @@ nav_order: 1
 
 Traktor is an open-source game engine written in C++ with a focus on modularity, performance, and developer workflow. It provides a complete development environment—a professional editor with hot-reloading, a modern Vulkan-based renderer with ray tracing, and a flexible architecture designed to be extended and customized.
 
+![TODO: Screenshot showing the Traktor editor with a game scene open - Scene Editor viewport in center, Database panel on left, Properties on right, demonstrating the professional editing environment]
+
 The engine has shipped commercial games on Steam, PlayStation Network, iOS, and Mac, proving itself in real-world production. Traktor follows an "editor-first" philosophy: rather than treating the editor as an afterthought, the entire engine is built around a powerful editing workflow. Changes you make appear in your running game within milliseconds, making iteration fast and development efficient.
 
 ## What Makes Traktor Different
@@ -40,6 +42,8 @@ The Traktor editor is designed for productivity. It maintains an active connecti
 ### Rendering
 
 Traktor uses a modern Vulkan-based frame graph renderer. Ray tracing support includes ray-traced global illumination (RTGI), ambient occlusion (RTAO), reflections, and shadows, with ReSTIR GI providing advanced global illumination quality. The shader graph is a node-based visual editor where you wire nodes together to create materials, with instant hot-reload when you make changes. If you need low-level control, you can drop into GLSL code within the graph. The renderer supports both deferred and Forward+ rendering paths, and includes a GPU skin cache for efficient character rendering.
+
+![TODO: Screenshot showing ray-traced rendering with global illumination, reflections, and realistic lighting in a sample scene]
 
 ### Scripting
 
