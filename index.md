@@ -76,11 +76,27 @@ Traktor currently offers full support for Windows and Linux platforms. While mob
 ### [Getting Started](getting-started/)
 Learn how to build Traktor, create your first project, and start making games.
 
-### [Architecture](architecture/)
-Understanding Traktor's modular design and core systems.
+### [Engine Documentation](engine/)
 
-### [Manual](manual/)
-Comprehensive guides for the Editor and Engine.
+Understand and use Traktor's core systems:
+
+- **[Architecture](engine/architecture/)** - How the engine is designed and organized
+- **[Scripting](engine/scripting/)** - Write gameplay code in Lua
+- **[Rendering](engine/render/)** - Modern Vulkan-based graphics
+- **[Physics](engine/physics/)** - Rigid bodies and character controllers
+- **[World System](engine/world/)** - Entities and components
+- **[And more...](engine/)** - Audio, animation, AI, networking, and all the systems
+
+### [Editor Documentation](editor/)
+
+Master the Traktor editor and your workflow:
+
+- **Interface** - Understand the editor's powerful tools
+- **Database** - Manage your project assets
+- **Scene Editor** - Build your game worlds
+- **Shader Graph** - Create materials visually
+- **Pipeline** - Convert assets to optimized runtime formats
+- **Deploy & Debug** - One-click deployment to any platform
 
 ---
 

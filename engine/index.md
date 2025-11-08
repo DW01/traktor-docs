@@ -1,9 +1,8 @@
 ---
 layout: default
-permalink: /manual/engine/
+permalink: /engine/
 title: Engine
-parent: Manual
-nav_order: 1
+nav_order: 3
 has_children: true
 ---
 

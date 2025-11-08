@@ -1,9 +1,9 @@
 ---
 layout: default
-permalink: /manual/engine/scene-animation/
+permalink: /engine/scene-animation/
 title: Scene Animation
 parent: Engine
-grand_parent: Manual
+
 nav_order: 10
 ---
 

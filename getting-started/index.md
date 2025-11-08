@@ -123,10 +123,10 @@ Create an **Objects** layer and add geometry:
 
 ## Next Steps
 
-- Read the [Architecture](../architecture/) guide
-- Explore the [Editor Manual](../manual/editor/)
-- Learn about the [Engine Systems](../manual/engine/)
-- Join the [Discord community](https://discord.gg/fSMrww2B7C)
+- Read the [Architecture](../engine/architecture/) guide to understand how Traktor is designed
+- Explore the [Editor Documentation](../editor/) to master your workflow
+- Learn about the [Engine Systems](../engine/) for scripting, physics, and rendering
+- Join the [Discord community](https://discord.gg/fSMrww2B7C) for help and discussions
 
 ---
 

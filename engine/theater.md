@@ -1,9 +1,9 @@
 ---
 layout: default
-permalink: /manual/engine/theater/
+permalink: /engine/theater/
 title: Theater
 parent: Engine
-grand_parent: Manual
+
 nav_order: 18
 ---
 

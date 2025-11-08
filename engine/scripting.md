@@ -1,17 +1,25 @@
 ---
 layout: default
-permalink: /manual/engine/scripting/
+permalink: /engine/scripting/
 title: Scripting
 parent: Engine
-grand_parent: Manual
+
 nav_order: 5
 ---
 
-# Scripting System
+# Scripting with Lua
 
-The Traktor scripting system integrates Lua 5.x for game logic and behavior programming. It provides a powerful, flexible way to add gameplay without recompiling C++ code.
+Scripting in Traktor is where your game comes to life. While the engine provides systems for rendering, physics, and audio, it's your Lua scripts that define what makes your game unique—the gameplay rules, character behaviors, UI interactions, and everything that makes players say "just one more level."
+
+Traktor uses **Lua 5.x** as its scripting language. If you've never used Lua before, don't worry—it's one of the easiest programming languages to learn, and it's been battle-tested in countless games from World of Warcraft to Angry Birds.
 
 ![TODO: Screenshot of the Lua script debugger showing breakpoints, variable inspection, and call stack]
+
+## Why Scripts Matter
+
+Think of C++ as the engine's muscle—it's fast, efficient, and handles the heavy lifting like rendering thousands of polygons or simulating complex physics. Scripts are the brain—they make decisions, respond to player input, and implement game rules that would be tedious to hard-code in C++.
+
+The best part? Scripts hot-reload instantly. Change your code, save the file, and see the results immediately in your running game. No recompilation, no waiting, no losing your place in the level you're testing.
 
 ## Quick Reference
 
@@ -44,17 +52,9 @@ end
 | Constants | `local MAX < const > = 10` | `local MAX = 10` |
 | Member variables | `self._speed` | `self.speed` |
 
-## Overview
+## The Foundation: Importing Traktor
 
-Traktor uses **Lua** as its primary scripting language, offering:
-
-- **Full Lua 5.x Support:** Standard Lua functionality
-- **Integrated Debugger:** Step through scripts, set breakpoints
-- **Hot-Reload:** Script changes reload instantly
-- **C++ Binding:** Easy integration with engine systems
-- **Profiler:** Performance analysis for scripts
-
-### Importing Traktor
+Before we dive into writing scripts, there's one crucial line you need at the top of every script file:
 
 **IMPORTANT:** You must use `import(traktor)` at the beginning of your scripts to access engine namespaces.
 
@@ -62,18 +62,13 @@ Traktor uses **Lua** as its primary scripting language, offering:
 import(traktor)  -- Required to access world, physics, render, animation, etc.
 ```
 
-Without this import, you won't have access to:
-- `world.*` - World and entity classes
-- `physics.*` - Physics components
-- `animation.*` - Animation components
-- `render.*` - Rendering classes
-- `sound.*` / `spray.*` - Audio and particles
-- `ui.*` - UI components
-- And other engine namespaces
+Without this import, you won't have access to the engine's namespaces like `world`, `physics`, `render`, `animation`, `sound`, `spray`, and many others. It's like trying to use a library without importing it first—the functions simply won't be available.
 
-## Script Component
+## How Scripts Attach to Your Game
 
-Scripts are attached to entities via the `ScriptComponent`:
+In Traktor, scripts become part of your game through the **ScriptComponent**. Think of components as Lego bricks that you attach to entities (game objects). A character entity might have a MeshComponent to make it visible, a PhysicsComponent to make it collide with things, and a ScriptComponent to make it behave intelligently.
+
+Here's how scripts are attached:
 
 ```cpp
 // C++ - Attach script to entity

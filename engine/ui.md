@@ -1,9 +1,9 @@
 ---
 layout: default
-permalink: /manual/engine/ui/
+permalink: /engine/ui/
 title: UI
 parent: Engine
-grand_parent: Manual
+
 nav_order: 13
 ---
 

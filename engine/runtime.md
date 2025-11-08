@@ -1,29 +1,27 @@
 ---
 layout: default
-permalink: /manual/engine/runtime/
+permalink: /engine/runtime/
 title: Runtime
 parent: Engine
-grand_parent: Manual
+
 nav_order: 2
 ---
 
-# Runtime System
+# Runtime System - Your Game's Heartbeat
 
-The Runtime system provides the application framework for Traktor games. It manages the application lifecycle, states, stages, and server subsystems.
+The Runtime System is your game's conductor, orchestrating all the moving pieces to create a cohesive experience. While the engine provides powerful systems for graphics, physics, and audio, the Runtime System is what ties them all together and keeps everything running in harmony.
+
+Think of it like running a theater production: you have lighting technicians, sound engineers, actors, and stagehands. Each group does their job, but someone needs to coordinate them—calling cues, managing scene changes, and ensuring everything happens in the right order. That's the Runtime System.
 
 ![TODO: Diagram showing the runtime architecture with Application at the top, Servers in the middle (Render, Physics, Audio, Script, etc.), and States/Stages at the bottom]
 
-## Overview
+## How It All Fits Together
 
-The Runtime module orchestrates the game loop and manages different subsystems through a **server-based architecture**. Applications are organized into **States** (for lower-level runtime control) or **Stages** (for higher-level, data-driven control) with **Layers**.
+The Runtime System uses a **server-based architecture**. Instead of having one monolithic game loop that handles everything, different subsystems are implemented as "servers"—independent managers that each handle one domain. The **RenderServer** handles graphics, the **PhysicsServer** manages physics simulation, the **AudioServer** controls sound, and so on.
 
-### Key Concepts
+Your game's content is organized into **Stages**—high-level states like "Main Menu", "Level 1", or "Loading Screen." Each stage contains **Layers**, which are ordered groups of entities and logic. Think of layers like transparencies stacked on an overhead projector: the background layer, the gameplay layer, the UI layer, each rendered in order to create the final image.
 
-- **Application:** The main entry point and container
-- **Servers:** Subsystem managers (Render, Physics, Audio, etc.)
-- **States:** Application modes (menu, loading, gameplay)
-- **Stages:** Data-driven scenes with layers
-- **Layers:** Ordered groups of entities/logic within a stage
+For more complex scenarios where you need fine-grained control, you can use **States** instead—lower-level constructs that give you complete control over the update cycle. But for most game development, Stages are the way to go: they're data-driven, editable in the editor, and much easier to iterate on.
 
 ## Application Architecture
 
