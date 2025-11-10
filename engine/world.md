@@ -9,7 +9,7 @@ nav_order: 3
 
 # World System - Building Your Game Universe
 
-Imagine your game as a stage where actors perform. The **World System** is that stage—it's where everything in your game exists and interacts. Whether it's the player character, enemies, power-ups, or environmental objects, they all live in the world.
+Imagine your game as a stage where actors perform. The **World System** is that stage. It's where everything in your game exists and interacts. Whether it's the player character, enemies, power-ups, or environmental objects, they all live in the world.
 
 Traktor uses an **Entity-Component** architecture, which is a fancy way of saying "build complex things from simple, reusable pieces." Think of it like building with Lego: instead of having one giant, custom-molded block for each type of object, you have small,standard pieces that click together in different ways.
 
@@ -19,13 +19,13 @@ Traktor uses an **Entity-Component** architecture, which is a fancy way of sayin
 
 The World System has three key players:
 
-**Worlds** are containers—they hold all the entities in a scene and coordinate their updates. When you load a level, you're loading a World. When the game ticks forward one frame, the World updates everything inside it.
+**Worlds** are containers. They hold all the entities in a scene and coordinate their updates. When you load a level, you're loading a World. When the game ticks forward one frame, the World updates everything inside it.
 
-**Entities** are game objects—the player, an enemy, a crate, a light source, whatever. But here's the twist: entities themselves are quite simple. They're basically just a position in space (a transform) and a collection of components. An entity without components is just an invisible point floating in your scene.
+**Entities** are game objects. The player, an enemy, a crate, a light source, whatever. But here's the twist: entities themselves are quite simple. They're basically just a position in space (a transform) and a collection of components. An entity without components is just an invisible point floating in your scene.
 
 **Components** are where the magic happens. They're modular pieces of functionality that you attach to entities. Want an entity to be visible? Add a MeshComponent. Want it to be affected by physics? Add a RigidBodyComponent. Want it to think and make decisions? Add a ScriptComponent. Each component adds one capability, and by combining components, you create rich, complex game objects.
 
-This approach—composition over inheritance—is incredibly powerful. Instead of writing a new class for every type of enemy or object, you just mix and match existing components in new ways.
+This approach. Composition over inheritance. Is incredibly powerful. Instead of writing a new class for every type of enemy or object, you just mix and match existing components in new ways.
 
 ## Core Concepts
 

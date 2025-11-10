@@ -9,13 +9,13 @@ nav_order: 17
 
 # Networking - Connecting Players Together
 
-Multiplayer games create moments that single-player games simply can't match—the thrill of competing against real people, the joy of cooperating with friends, the emergent gameplay that happens when unpredictable human players interact. But networking is also one of the most challenging aspects of game development. Players are separated by hundreds or thousands of miles, connected by unreliable internet connections with varying latency. Data arrives late, out of order, or not at all. And you need to make it all feel responsive and fair.
+Multiplayer games create moments that single-player games simply can't match. The thrill of competing against real people, the joy of cooperating with friends, the emergent gameplay that happens when unpredictable human players interact. But networking is also one of the most challenging aspects of game development. Players are separated by hundreds or thousands of miles, connected by unreliable internet connections with varying latency. Data arrives late, out of order, or not at all. And you need to make it all feel responsive and fair.
 
 Traktor's networking system provides three layers of functionality: **low-level networking** (TCP/UDP sockets, HTTP for direct communication), **online services** (session management, matchmaking with lobbies, leaderboards, achievements, cloud saves), and **state replication** (the Jungle module for synchronizing game state across peers). Together, these tools let you build anything from simple leaderboards to fully synchronized multiplayer experiences.
 
 Think of networking as building a bridge between separate game instances running on different machines. You need to decide what information crosses that bridge (positions? Health? Input?), how it's transmitted (reliably or fast?), and how to handle the inevitable problems (lag, packet loss, cheating). Traktor gives you the low-level tools for direct control (Net module), high-level online services (Online module for lobbies and matchmaking), and state replication systems (Jungle module) for synchronizing game state.
 
-**Note:** This documentation describes the networking architecture and common patterns. Specific API details may vary—refer to `code/Net/` and `code/Online/` for actual interfaces.
+**Note:** This documentation describes the networking architecture and common patterns. Specific API details may vary. Refer to `code/Net/` and `code/Online/` for actual interfaces.
 
 ## The Challenge of Networking
 
@@ -27,7 +27,7 @@ Before diving into code, it's important to understand what makes networking hard
 
 **Bandwidth** limits how much data you can send per second. Send too much, and you'll saturate connections, causing lag and stuttering.
 
-**Cheating** is easier in multiplayer. Client-side validation isn't enough—the server must verify everything, or players will manipulate local data to cheat.
+**Cheating** is easier in multiplayer. Client-side validation isn't enough. The server must verify everything, or players will manipulate local data to cheat.
 
 **Synchronization** is complex. Every client sees a slightly different version of the world due to latency. You need techniques like client-side prediction and server reconciliation to make it feel smooth.
 
@@ -68,7 +68,7 @@ if (socket->connect(SocketAddressIPv4("127.0.0.1", 8080)))
 
 ### UDP Sockets: Fast and Unreliable
 
-**UDP** sends data without guarantees. Packets can arrive out of order, be lost entirely, or be duplicated. But it's fast—no handshaking, no retransmission delays.
+**UDP** sends data without guarantees. Packets can arrive out of order, be lost entirely, or be duplicated. But it's fast. No handshaking, no retransmission delays.
 
 ```cpp
 // C++ - UDP
@@ -196,7 +196,7 @@ function LeaderboardManager:getTopScores(leaderboardId)
 end
 ```
 
-**Multiple leaderboards** track different metrics—create separate leaderboard IDs for each:
+**Multiple leaderboards** track different metrics. Create separate leaderboard IDs for each:
 
 ```lua
 leaderboards:setScore("FastestRun", timeInSeconds)
@@ -289,7 +289,7 @@ function CloudSaveManager:loadFromCloud(saveSlotId)
 end
 ```
 
-**Note:** Save data must be ISerializable objects. Cloud save operations are asynchronous—check results with the `:succeed()` method.
+**Note:** Save data must be ISerializable objects. Cloud save operations are asynchronous. Check results with the `:succeed()` method.
 
 ## Multiplayer: Matchmaking and State Replication
 
@@ -502,7 +502,7 @@ replicator:sendEventToPrimary(event, false)  -- false = not guaranteed order
 - `sendEventToPrimary()` sends only to the primary/host peer
 - The `inOrder` parameter controls whether events arrive in order (reliable) or not (faster)
 
-Events are great for notifications—player joined, item picked up, ability used—where you need to notify other machines of something that happened.
+Events are great for notifications. Player joined, item picked up, ability used. Where you need to notify other machines of something that happened.
 
 ## Network Serialization: Efficient Data
 
@@ -535,7 +535,7 @@ reader >> health;
 
 ### Client-Side Prediction
 
-Without prediction, player input feels sluggish—you press W, wait for the server, then see movement. **Client-side prediction** makes local input feel instant:
+Without prediction, player input feels sluggish. You press W, wait for the server, then see movement. **Client-side prediction** makes local input feel instant:
 
 1. Client predicts result of input immediately (moves locally)
 2. Client sends input to server
@@ -575,7 +575,7 @@ end
 
 ## Best Practices
 
-**Choose the right protocol.** UDP for real-time gameplay, TCP for reliable data. Don't use TCP for player movement—latency stacks up.
+**Choose the right protocol.** UDP for real-time gameplay, TCP for reliable data. Don't use TCP for player movement. Latency stacks up.
 
 **Minimize bandwidth.** Send only what changed. Quantize values. Compress data. Bandwidth is precious.
 
@@ -692,7 +692,7 @@ If your game works well under these conditions, it'll handle real-world networks
 
 **Never trust the client.** Clients can be modified. Always validate on the server.
 
-**Encrypt sensitive data.** Passwords, payment info, personal data—encrypt in transit.
+**Encrypt sensitive data.** Passwords, payment info, personal data. Encrypt in transit.
 
 **Rate limiting** prevents spam and DoS attacks. Limit how many messages a client can send per second.
 

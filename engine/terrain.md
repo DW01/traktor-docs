@@ -9,9 +9,9 @@ nav_order: 14
 
 # Terrain System - Building Vast Outdoor Worlds
 
-Open-world games need something traditional 3D modeling struggles with: enormous, natural-looking outdoor environments. Modeling every hill, valley, and mountain by hand would be impossibly time-consuming, and the resulting geometry would be so dense it would bring even powerful GPUs to their knees. That's where **terrain systems** come in—specialized tools for creating and rendering large-scale outdoor landscapes efficiently.
+Open-world games need something traditional 3D modeling struggles with: enormous, natural-looking outdoor environments. Modeling every hill, valley, and mountain by hand would be impossibly time-consuming, and the resulting geometry would be so dense it would bring even powerful GPUs to their knees. That's where **terrain systems** come in. Specialized tools for creating and rendering large-scale outdoor landscapes efficiently.
 
-Traktor's terrain system uses **heightfield-based terrain**: instead of modeling terrain as arbitrary 3D meshes, you define the ground as a grid where each point has a height value. Think of it like a topographic map—looking down from above, you see a grid, and each grid cell knows how high the ground is at that point. This simple representation is incredibly efficient: you can represent vast landscapes with manageable memory, render them quickly with LOD (level of detail) systems, and edit them intuitively with sculpting brushes.
+Traktor's terrain system uses **heightfield-based terrain**: instead of modeling terrain as arbitrary 3D meshes, you define the ground as a grid where each point has a height value. Think of it like a topographic map. Looking down from above, you see a grid, and each grid cell knows how high the ground is at that point. This simple representation is incredibly efficient: you can represent vast landscapes with manageable memory, render them quickly with LOD (level of detail) systems, and edit them intuitively with sculpting brushes.
 
 But terrain isn't just height data. The system also handles **multi-layer texturing** (blending grass, rock, dirt, and snow based on height, slope, or manual painting), **collision** (so characters and physics objects interact correctly), and **detail objects** (grass, rocks, trees scattered across the surface). The result is rich, believable outdoor environments that run smoothly even when spanning kilometers.
 
@@ -19,13 +19,13 @@ But terrain isn't just height data. The system also handles **multi-layer textur
 
 ## Understanding Heightfield Terrain
 
-A **heightfield** is a 2D grid where each cell stores a single height value. Imagine looking at terrain from directly above—you see an X-Z plane, and for every (x, z) position, there's a height (y) value. This height determines how high the ground is at that location.
+A **heightfield** is a 2D grid where each cell stores a single height value. Imagine looking at terrain from directly above. You see an X-Z plane, and for every (x, z) position, there's a height (y) value. This height determines how high the ground is at that location.
 
-**Resolution** determines detail. A 512x512 heightfield has 262,144 height samples. A 1024x1024 heightfield has over a million samples, providing finer detail but using more memory. The size in world units is separate—a 512x512 heightfield might span 1 kilometer, giving you roughly 2-meter resolution.
+**Resolution** determines detail. A 512x512 heightfield has 262,144 height samples. A 1024x1024 heightfield has over a million samples, providing finer detail but using more memory. The size in world units is separate. A 512x512 heightfield might span 1 kilometer, giving you roughly 2-meter resolution.
 
 **Height precision** is typically stored as 16-bit or 32-bit values. Higher precision allows for subtle elevation changes, while lower precision is sufficient for most terrain.
 
-The beauty of heightfields is their simplicity: **there can only be one height at any (x, z) position**. This means no overhangs, caves, or arches—but for outdoor landscapes (hills, mountains, valleys), it's perfect. The restriction enables massive performance optimizations.
+The beauty of heightfields is their simplicity: **there can only be one height at any (x, z) position**. This means no overhangs, caves, or arches. But for outdoor landscapes (hills, mountains, valleys), it's perfect. The restriction enables massive performance optimizations.
 
 ## Creating and Editing Terrain
 
@@ -48,7 +48,7 @@ The terrain editor provides brushes for sculpting height:
 
 **Flatten brush** levels terrain to a specific height. Perfect for creating plateaus, roads, or building sites.
 
-**Noise brush** adds procedural noise for realistic roughness. Terrain that's too smooth looks artificial—noise adds natural variation.
+**Noise brush** adds procedural noise for realistic roughness. Terrain that's too smooth looks artificial. Noise adds natural variation.
 
 **Brush parameters:**
 - **Size** - How large an area the brush affects
@@ -59,7 +59,7 @@ The terrain editor provides brushes for sculpting height:
 
 Terrain uses **texture splatting** to blend multiple materials across the surface:
 
-**Base layer** covers the entire terrain—typically grass or dirt.
+**Base layer** covers the entire terrain. Typically grass or dirt.
 
 **Additional layers** (rock, gravel, sand, snow) are painted on top, blending smoothly with the base.
 
@@ -100,7 +100,7 @@ The shader blends layers based on:
 - **Slope** - Steep areas get rock, flat areas get grass
 - **Procedural noise** - Adds natural variation to blending
 
-This creates organic transitions—grass gradually giving way to rock on slopes, snow appearing on peaks, dirt paths winding through grass.
+This creates organic transitions. Grass gradually giving way to rock on slopes, snow appearing on peaks, dirt paths winding through grass.
 
 ## Level of Detail (LOD)
 
@@ -108,7 +108,7 @@ Terrain can have millions of triangles if rendered at full resolution. **LOD sys
 
 **Near terrain** (close to camera) renders at full resolution with all detail.
 
-**Medium distance** reduces polygon density—you won't notice the difference from far away.
+**Medium distance** reduces polygon density. You won't notice the difference from far away.
 
 **Far distance** uses very low-poly representation, maybe just a handful of triangles per terrain tile.
 
@@ -120,9 +120,9 @@ Terrain can have millions of triangles if rendered at full resolution. **LOD sys
 
 Terrain needs to collide correctly with characters, vehicles, and physics objects:
 
-**Collision mesh** is generated from the heightfield, typically at lower resolution than the visual mesh. Physics doesn't need the full detail—a coarser mesh performs better while still providing accurate collision.
+**Collision mesh** is generated from the heightfield, typically at lower resolution than the visual mesh. Physics doesn't need the full detail. A coarser mesh performs better while still providing accurate collision.
 
-**Surface materials** can define physics properties—grass has different friction than ice, mud slows movement.
+**Surface materials** can define physics properties. Grass has different friction than ice, mud slows movement.
 
 ```cpp
 // C++ - Create terrain with physics
@@ -186,7 +186,7 @@ Terrain can be expensive if not optimized. Here's how Traktor keeps it fast:
 
 **Use LOD aggressively.** Players don't notice lower detail at distance, but they absolutely notice poor frame rates. Let distant terrain be simple.
 
-**Limit texture layers.** Each additional layer adds shader complexity. 4-6 layers is typically enough—more starts impacting performance with diminishing visual returns.
+**Limit texture layers.** Each additional layer adds shader complexity. 4-6 layers is typically enough. More starts impacting performance with diminishing visual returns.
 
 **Paint blending naturally.** Abrupt transitions look artificial. Use large, soft brushes for gradual blending between materials.
 

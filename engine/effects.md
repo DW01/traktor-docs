@@ -9,7 +9,7 @@ nav_order: 11
 
 # Effects System - Coordinated Visual and Audio Impact
 
-Watch an explosion in a modern game—the billowing smoke, the bright flash, the cascading sparks, the thunderous boom, all perfectly synchronized. That's not just particles or just sound—it's an **integrated effect** where visual (VFX) and audio (SFX) combine to create impact. Fire crackles with sound, explosions flash and roar, magic spells shimmer with ethereal whooshes. Effects are what make games feel alive and responsive.
+Watch an explosion in a modern game. The billowing smoke, the bright flash, the cascading sparks, the thunderous boom, all perfectly synchronized. That's not just particles or just sound. It's an **integrated effect** where visual (VFX) and audio (SFX) combine to create impact. Fire crackles with sound, explosions flash and roar, magic spells shimmer with ethereal whooshes. Effects are what make games feel alive and responsive.
 
 Traktor's effects system (the **Spray module**) provides an integrated approach to game effects:
 
@@ -39,21 +39,21 @@ An effect in the Spray module can contain multiple coordinated elements working 
 
 **Emitters** spawn particles. You configure where they spawn (a point, a box volume, a sphere, or even the surface of a mesh), how many spawn per second (emission rate), and their initial properties (velocity, size, color, rotation). An emitter for an explosion might burst out hundreds of particles all at once, while an emitter for a torch flame continuously spawns particles at a steady rate.
 
-**Particles** themselves are simple entities—they have position, velocity, size, color, rotation, and age. They're typically rendered as textured quads (billboards) that always face the camera, though they can also be oriented based on velocity or other factors.
+**Particles** themselves are simple entities. They have position, velocity, size, color, rotation, and age. They're typically rendered as textured quads (billboards) that always face the camera, though they can also be oriented based on velocity or other factors.
 
 **Trails** create motion streaks by rendering ribbons that follow moving objects. Perfect for bullets, missiles, or any fast-moving projectile that needs a sense of speed.
 
 **Forces** affect particles after they spawn. Gravity pulls particles down, wind pushes them horizontally, vortex forces create spiraling motion, and turbulence adds realistic randomness. Forces make particles feel like they exist in the world rather than just floating arbitrarily.
 
-**Modifiers** change particle properties over their lifetime. A particle might start small and grow larger, or begin opaque and fade to transparent. Color can shift—flames start bright yellow, then turn orange and red before fading to black. These changes happen smoothly using curves or gradients.
+**Modifiers** change particle properties over their lifetime. A particle might start small and grow larger, or begin opaque and fade to transparent. Color can shift. Flames start bright yellow, then turn orange and red before fading to black. These changes happen smoothly using curves or gradients.
 
-**Rendering** determines how particles look on screen. Additive blending makes particles glow and layer bright effects. Alpha blending makes smoke and fog look soft and translucent. Textures provide detail—a fireball texture, a spark sprite, a smoke puff.
+**Rendering** determines how particles look on screen. Additive blending makes particles glow and layer bright effects. Alpha blending makes smoke and fog look soft and translucent. Textures provide detail. A fireball texture, a spark sprite, a smoke puff.
 
 ### Audio Elements
 
 **Sound components** attach audio to effects, playing sounds when the effect plays. The sound can loop with the effect or play once as a one-shot.
 
-**Sound events** trigger sounds at specific points in the effect's timeline—an explosion might have a flash sound at the start and a rumble sound 0.2 seconds later.
+**Sound events** trigger sounds at specific points in the effect's timeline. An explosion might have a flash sound at the start and a rumble sound 0.2 seconds later.
 
 ### Effect Layers and Timing
 
@@ -94,7 +94,7 @@ end
 effect:reset()
 ```
 
-**Note:** Effects are primarily configured in the editor (emitters, forces, colors, sounds, timing, etc.). The Lua API provides playback control—starting, stopping, looping, and resetting effects—but not fine-grained control over individual particles or emission parameters.
+**Note:** Effects are primarily configured in the editor (emitters, forces, colors, sounds, timing, etc.). The Lua API provides playback control. Starting, stopping, looping, and resetting effects. But not fine-grained control over individual particles or emission parameters.
 
 ## Creating Effects in the Editor
 
@@ -119,7 +119,7 @@ Effects are created and edited visually in the Traktor editor:
 
 ### Explosion
 
-An explosion effect combines visuals and audio—particles burst outward, a bright flash, lingering smoke, and a thunderous boom:
+An explosion effect combines visuals and audio. Particles burst outward, a bright flash, lingering smoke, and a thunderous boom:
 
 **Visual configuration:**
 - **Emitter:** Sphere emitter with radial velocity
@@ -251,9 +251,9 @@ Particles can collide with the world, bouncing off surfaces or dying on impact:
 
 **Bounce behavior:** Particles can reflect off surfaces with configurable elasticity (bounciness) and friction.
 
-**Die on collision:** Particles can disappear when they hit a surface—perfect for rain splashing on the ground or sparks hitting walls.
+**Die on collision:** Particles can disappear when they hit a surface. Perfect for rain splashing on the ground or sparks hitting walls.
 
-**Spawn secondary effects:** On collision, particles can trigger other effects—rain creates splash particles, sparks create impact flashes.
+**Spawn secondary effects:** On collision, particles can trigger other effects. Rain creates splash particles, sparks create impact flashes.
 
 ## Trails for Motion Blur
 
@@ -399,7 +399,7 @@ When effects don't work as expected:
 
 **Effect appears finished but keeps playing:** Check if `effect.loopEnable` is set when it shouldn't be.
 
-Use the editor's effect preview to iterate quickly. You can see and hear changes in real-time without restarting the game. The Lua API is for playback control—most visual and audio tuning happens in the editor.
+Use the editor's effect preview to iterate quickly. You can see and hear changes in real-time without restarting the game. The Lua API is for playback control. Most visual and audio tuning happens in the editor.
 
 **No sound plays:** Verify sound components are added to the effect in the editor, check that the sound resource is loaded, ensure volume is not zero.
 

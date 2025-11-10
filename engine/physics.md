@@ -9,11 +9,11 @@ nav_order: 4
 
 # Physics System - Bringing Your World to Life
 
-Physics is what makes your game world feel real. When a player kicks a ball and it bounces off a wall, when a character jumps and gravity pulls them back down, when a car slides around a corner—that's all physics at work. Without it, your game would feel like objects floating in a void, passing through each other like ghosts.
+Physics is what makes your game world feel real. When a player kicks a ball and it bounces off a wall, when a character jumps and gravity pulls them back down, when a car slides around a corner. That's all physics at work. Without it, your game would feel like objects floating in a void, passing through each other like ghosts.
 
 Think of physics as the invisible set of natural laws that govern your virtual world. In the real world, we have gravity, friction, momentum, and collisions. Physics engines simulate these forces in your game, making everything behave the way players expect. Drop something? It falls. Push something? It moves. Crash into a wall? You stop (hopefully before taking damage).
 
-Traktor gives you two powerful physics engines to choose from: **Jolt Physics** (modern and blazingly fast) and **Bullet Physics** (mature and battle-tested). Both provide everything you need to create convincing physical simulations—from simple falling objects to complex vehicle dynamics and character movement.
+Traktor gives you two powerful physics engines to choose from: **Jolt Physics** (modern and blazingly fast) and **Bullet Physics** (mature and battle-tested). Both provide everything you need to create convincing physical simulations. From simple falling objects to complex vehicle dynamics and character movement.
 
 ![TODO: Screenshot showing physics simulation with rigid bodies, constraints, and collision shapes visualized in the editor]
 
@@ -21,7 +21,7 @@ Traktor gives you two powerful physics engines to choose from: **Jolt Physics** 
 
 Traktor doesn't lock you into one physics solution. Instead, it supports two backends, each with its own strengths:
 
-**Jolt Physics** is the recommended choice for new projects. It's a modern engine designed for performance, making excellent use of multi-core processors. If you're building a game with lots of dynamic objects—think physics puzzles, destruction, or open worlds with interactive props—Jolt is your friend.
+**Jolt Physics** is the recommended choice for new projects. It's a modern engine designed for performance, making excellent use of multi-core processors. If you're building a game with lots of dynamic objects. Think physics puzzles, destruction, or open worlds with interactive props—Jolt is your friend.
 
 **Bullet Physics** has been around longer and powers many commercial games. It's feature-rich and extremely stable. If you need specific features that Bullet excels at, or if you're working with existing Bullet-based tools, it's a solid choice.
 
@@ -63,7 +63,7 @@ local vel = body:getLinearVelocity()
 local angVel = body:getAngularVelocity()
 ```
 
-Bodies come in three flavors: **Dynamic** bodies have mass and are fully simulated—they fall, bounce, and respond to forces. **Static** bodies (mass = 0) never move and have infinite mass—they're perfect for walls, floors, and buildings. **Kinematic** bodies move via animation rather than physics forces—useful for moving platforms or scripted sequences.
+Bodies come in three flavors: **Dynamic** bodies have mass and are fully simulated. They fall, bounce, and respond to forces. **Static** bodies (mass = 0) never move and have infinite mass. They're perfect for walls, floors, and buildings. **Kinematic** bodies move via animation rather than physics forces. Useful for moving platforms or scripted sequences.
 
 ### Collision Shapes
 
@@ -110,7 +110,7 @@ compoundDesc.shapes.push_back(shape2);
 
 ### Character Controller
 
-Building responsive character movement from scratch is tricky—you need to handle slopes, stairs, sliding, and collisions just right. That's why Traktor provides a **CharacterComponent** that handles all the common cases for you.
+Building responsive character movement from scratch is tricky. You need to handle slopes, stairs, sliding, and collisions just right. That's why Traktor provides a **CharacterComponent** that handles all the common cases for you.
 
 ```cpp
 // C++ - Create character controller
@@ -266,7 +266,7 @@ Common layers include **World** (static environment), **Player** (the player cha
 
 ### Collision Groups
 
-For even more fine-grained control, you can use collision groups. This lets you set up complex relationships—like "group 1 collides with groups 2 and 3 but not 4":
+For even more fine-grained control, you can use collision groups. This lets you set up complex relationships. Like "group 1 collides with groups 2 and 3 but not 4":
 
 ```cpp
 // Set collision group
@@ -389,7 +389,7 @@ end
 
 ### World Configuration
 
-The physics world itself has settings you can tune. Gravity is the most obvious—reduce it for a moon-like feel, or increase it for a heavier, grounded experience:
+The physics world itself has settings you can tune. Gravity is the most obvious. Reduce it for a moon-like feel, or increase it for a heavier, grounded experience:
 
 ```cpp
 // Set gravity
@@ -404,7 +404,7 @@ physicsWorld->setSolverIterations(10);
 
 ### Material Properties
 
-Each body has material properties that control how it behaves when it collides. Friction determines how slippery it is—ice has low friction, rubber has high friction. Restitution controls bounciness—a basketball has high restitution, a beanbag has low restitution:
+Each body has material properties that control how it behaves when it collides. Friction determines how slippery it is. Ice has low friction, rubber has high friction. Restitution controls bounciness. A basketball has high restitution, a beanbag has low restitution:
 
 ```cpp
 // Per-body material
@@ -418,7 +418,7 @@ body->setAngularDamping(0.1f);  // Rotational damping
 
 Physics simulation can be expensive, especially with many dynamic objects. Here are the keys to keeping your game running smoothly:
 
-**Use simple shapes whenever possible.** Boxes, spheres, and capsules are orders of magnitude faster than mesh colliders. A character can be a capsule even if they're visually detailed—players won't notice.
+**Use simple shapes whenever possible.** Boxes, spheres, and capsules are orders of magnitude faster than mesh colliders. A character can be a capsule even if they're visually detailed. Players won't notice.
 
 **Mark non-moving objects as static** by setting mass to zero. Static bodies are nearly free performance-wise because the engine doesn't simulate them.
 
@@ -426,7 +426,7 @@ Physics simulation can be expensive, especially with many dynamic objects. Here 
 
 **Use compound shapes** instead of multiple separate bodies when building complex objects. A single compound shape performs better than several individual rigid bodies.
 
-**The broad phase** spatial partitioning system handles large numbers of objects efficiently by quickly eliminating pairs that couldn't possibly collide. You don't need to do anything special—it just works—but it's good to know it's there.
+**The broad phase** spatial partitioning system handles large numbers of objects efficiently by quickly eliminating pairs that couldn't possibly collide. You don't need to do anything special. It just works. But it's good to know it's there.
 
 ### Profiling
 
@@ -442,7 +442,7 @@ log::info << "Simulation time: " << stats.simulationTime << " ms" << Endl;
 
 ## Ragdolls and Advanced Features
 
-For advanced use cases, Traktor supports ragdoll physics—turning a skeletal character into a floppy, physics-driven puppet. This is perfect for dramatic deaths, unconscious characters, or physics-based animation blending:
+For advanced use cases, Traktor supports ragdoll physics. Turning a skeletal character into a floppy, physics-driven puppet. This is perfect for dramatic deaths, unconscious characters, or physics-based animation blending:
 
 ```cpp
 // Create ragdoll from skeleton
@@ -458,7 +458,7 @@ character->enableRagdoll(ragdoll);
 
 ## Best Practices
 
-**Scale matters.** Physics engines work best when you use realistic scales—ideally, 1 unit = 1 meter. Going too small or too large can cause numerical instability and weird behavior.
+**Scale matters.** Physics engines work best when you use realistic scales. Ideally, 1 unit = 1 meter. Going too small or too large can cause numerical instability and weird behavior.
 
 **Avoid tiny objects.** Very small objects (like a 0.01-unit marble) are hard for physics engines to simulate accurately. If you need small visual objects, use larger collision shapes.
 

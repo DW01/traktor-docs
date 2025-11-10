@@ -9,7 +9,7 @@ nav_order: 8
 
 # Render System - Painting Your Virtual World
 
-Rendering is what turns all your game data—3D models, textures, lights, and animations—into the beautiful images players see on screen. It's the bridge between the abstract mathematical representation of your world and the vibrant, immersive visuals that make your game come alive.
+Rendering is what turns all your game data (3D models, textures, lights, and animations) into the beautiful images players see on screen. It's the bridge between the abstract mathematical representation of your world and the vibrant, immersive visuals that make your game come alive.
 
 Think of the render system as a sophisticated camera and darkroom combined. Each frame, it captures your scene from the camera's perspective, processes it through various stages (like developing film), applies effects and filters, and finally presents the polished result. All of this happens 60+ times per second, creating the illusion of smooth, real-time motion.
 
@@ -21,7 +21,7 @@ Traktor's render system is built on **Vulkan**, a modern graphics API that gives
 
 ## The Big Picture: Frame Graphs
 
-Modern rendering isn't a simple linear process. You don't just "draw everything and you're done." Instead, rendering involves multiple passes—shadow maps, geometry, lighting, reflections, post-processing—each building on the previous results. Managing this complexity manually is error-prone and tedious.
+Modern rendering isn't a simple linear process. You don't just "draw everything and you're done." Instead, rendering involves multiple passes: shadow maps, geometry, lighting, reflections, post-processing - each building on the previous results. Managing this complexity manually is error-prone and tedious.
 
 That's where the **Frame Graph** comes in. Think of it as a blueprint or recipe for your rendering pipeline. You declare what passes you need and what data flows between them, and the system figures out the optimal execution order, manages GPU resources, and handles synchronization automatically.
 
@@ -46,7 +46,7 @@ The frame graph automatically inserts GPU barriers (ensuring one pass finishes b
 
 Traktor supports two main rendering approaches, each with different strengths:
 
-**Deferred Rendering** works in stages: first, render all geometry into a **G-Buffer** (geometry buffer) containing albedo, normals, metallic/roughness, and depth. Then, in a separate pass, calculate lighting by reading from the G-Buffer. Finally, apply post-processing. This approach excels when you have many lights—hundreds or even thousands—because lighting is calculated per-pixel rather than per-object. It's also great for consistent material quality and efficient lighting calculations.
+**Deferred Rendering** works in stages: first, render all geometry into a **G-Buffer** (geometry buffer) containing albedo, normals, metallic/roughness, and depth. Then, in a separate pass, calculate lighting by reading from the G-Buffer. Finally, apply post-processing. This approach excels when you have many lights - hundreds or even thousands - because lighting is calculated per-pixel rather than per-object. It's also great for consistent material quality and efficient lighting calculations.
 
 **Forward+ Rendering** takes a different approach: it first renders a depth-only pre-pass to establish the Z-buffer, then performs per-tile light culling (figuring out which lights affect which screen regions), and finally renders in a forward pass, shading only with the lights visible in each tile. Forward+ shines when you need transparency (which is tricky in deferred), MSAA anti-aliasing, or lower memory usage.
 
@@ -56,14 +56,14 @@ Both approaches have their place, and Traktor lets you choose based on your proj
 
 ### Shader Graph
 
-The **Shader Graph** is a visual, node-based editor for creating materials. Instead of writing shader code by hand (though you can if you want), you connect nodes together: sample a texture here, multiply by a color there, add some math, and wire it all up to the output. It's intuitive, fast to iterate on, and powerful.
+The **Shader Graph** is a visual, node-based editor for creating materials. Instead of writing shader code by hand (though you can if you want), you connect nodes together - sample a texture here, multiply by a color there, add some math, and wire it all up to the output. It's intuitive, fast to iterate on, and powerful.
 
 ![TODO: Screenshot of shader graph editor showing nodes for textures, math operations, PBR output]
 
 To create a shader:
 1. Open the Shader Graph editor in Traktor
-2. Add input nodes—texture samples, vertex attributes, uniforms
-3. Add processing nodes—math operations, color conversions, utility functions
+2. Add input nodes: texture samples, vertex attributes, uniforms
+3. Add processing nodes: math operations, color conversions, utility functions
 4. Connect everything to output nodes (fragment color, normals, metallic/roughness)
 5. Compile and preview in real-time
 
@@ -75,7 +75,7 @@ PBR is a rendering approach based on real-world physics. Instead of faking how m
 
 A PBR material uses these core properties:
 
-**Albedo** is the base color—what color the material is when lit by pure white light. **Metallic** defines whether the surface is metal (1.0) or dielectric like plastic or wood (0.0). Metals reflect light very differently than non-metals. **Roughness** controls surface smoothness—a smooth surface (low roughness) produces sharp, mirror-like reflections, while a rough surface (high roughness) scatters light and looks matte. **Normal** maps add fine surface detail without additional geometry. **Ambient Occlusion (AO)** darkens crevices where indirect light doesn't reach. **Emissive** makes surfaces glow, emitting their own light.
+**Albedo** is the base color - what color the material is when lit by pure white light. **Metallic** defines whether the surface is metal (1.0) or dielectric like plastic or wood (0.0) - metals reflect light very differently than non-metals. **Roughness** controls surface smoothness - a smooth surface (low roughness) produces sharp, mirror-like reflections, while a rough surface (high roughness) scatters light and looks matte. **Normal** maps add fine surface detail without additional geometry. **Ambient Occlusion (AO)** darkens crevices where indirect light doesn't reach. **Emissive** makes surfaces glow, emitting their own light.
 
 ```cpp
 // Material properties
@@ -141,7 +141,7 @@ spotlight->setRange(20.0f);
 
 ### Shadows
 
-Shadows ground objects in the world and add depth. Traktor supports traditional **shadow maps**—rendering the scene from the light's perspective to determine what's in shadow—using cascaded shadow maps for directional lights (multiple resolution levels for near and far), cube shadow maps for point lights (six-sided maps covering all directions), and perspective shadow maps for spot lights.
+Shadows ground objects in the world and add depth. Traktor supports traditional **shadow maps** - rendering the scene from the light's perspective to determine what's in shadow. This includes cascaded shadow maps for directional lights (multiple resolution levels for near and far), cube shadow maps for point lights (six-sided maps covering all directions), and perspective shadow maps for spot lights.
 
 For even higher quality, you can enable **ray-traced shadows** that trace actual light rays to determine if a point is in shadow:
 
@@ -153,7 +153,7 @@ light->setRayTracedShadows(true);  // Use RT shadows
 
 Real-world lighting doesn't come from just direct light sources. Light bounces off surfaces, illuminating other surfaces indirectly. This is **global illumination (GI)**, and it's what makes scenes feel truly realistic.
 
-Traktor supports **ReSTIR GI** (Reservoir-based Spatiotemporal Importance Resampling), a cutting-edge real-time GI technique. It handles dynamic lighting—lights can move, and indirect lighting updates in real-time. For even more accuracy, you can enable **ray-traced GI** which simulates light bounces:
+Traktor supports **ReSTIR GI** (Reservoir-based Spatiotemporal Importance Resampling), a cutting-edge real-time GI technique that handles dynamic lighting - lights can move, and indirect lighting updates in real-time. For even more accuracy, you can enable **ray-traced GI** which simulates light bounces:
 
 ```cpp
 renderSettings->setRTGI(true);
@@ -162,7 +162,7 @@ renderSettings->setRTGIBounces(2);  // Number of light bounces
 
 ## Ray Tracing: Simulating Reality
 
-Traditional rendering uses tricks and approximations to make things look good. Ray tracing, on the other hand, actually simulates how light works in the real world—tracing rays from the camera through the scene, bouncing off surfaces, and gathering light. The result is stunningly realistic reflections, shadows, and lighting.
+Traditional rendering uses tricks and approximations to make things look good. Ray tracing, on the other hand, actually simulates how light works in the real world - tracing rays from the camera through the scene, bouncing off surfaces, and gathering light. The result is stunningly realistic reflections, shadows, and lighting.
 
 Traktor supports hardware-accelerated ray tracing for several effects:
 
@@ -173,7 +173,7 @@ renderSettings->setRTAO(true);
 renderSettings->setRTAORadius(1.0f);
 ```
 
-**Ray-traced Reflections** produce accurate, dynamic reflections on any surface—no pre-baked cube maps needed:
+**Ray-traced Reflections** produce accurate, dynamic reflections on any surface. No pre-baked cube maps needed:
 
 ```cpp
 renderSettings->setRTReflections(true);
@@ -224,7 +224,7 @@ The graph-based image processing system lets you create custom post effects. Bui
 
 Great graphics mean nothing if your game runs at 10 FPS. Traktor includes several features to keep rendering fast:
 
-**GPU Culling** automatically tests object visibility on the GPU. Only objects visible from the camera are rendered, dramatically improving performance in complex scenes—and it's all automatic.
+**GPU Culling** automatically tests object visibility on the GPU. Only objects visible from the camera are rendered, dramatically improving performance in complex scenes. And it's all automatic.
 
 **Level of Detail (LOD)** systems render simpler versions of meshes when they're far away. Up close, you see all the detail. At a distance, a simplified model that looks identical but renders much faster:
 
@@ -234,7 +234,7 @@ mesh->addLOD(mediumDetailMesh, 50.0f); // 50-100 units
 mesh->addLOD(lowDetailMesh, 100.0f);   // 100+ units
 ```
 
-**Automatic batching** groups similar objects together, reducing draw calls. Instanced rendering draws many copies of the same object in a single call—perfect for foliage, rocks, or crowds.
+**Automatic batching** groups similar objects together, reducing draw calls. Instanced rendering draws many copies of the same object in a single call. Perfect for foliage, rocks, or crowds.
 
 Check rendering stats to see what's consuming time:
 
@@ -297,7 +297,7 @@ When something doesn't look right, visual debugging tools help you see what's ha
 
 In the editor, enable visualization modes: **Wireframe** shows the underlying geometry, **Normals** displays surface orientation, **Texture UVs** reveals how textures map to geometry, **Lightmaps** shows baked lighting, **Shadow Maps** lets you inspect shadow quality, and **G-Buffer** views let you see individual deferred rendering buffers.
 
-**Shader hot-reload** is incredibly useful during development. Edit a shader, save, and it automatically recompiles and reloads—instant feedback.
+**Shader hot-reload** is incredibly useful during development. Edit a shader, save, and it automatically recompiles and reloads. Instant feedback.
 
 For deeper analysis, use **RenderDoc integration**. Launch your game with RenderDoc, capture a frame, and inspect every draw call, resource, and shader in detail. It's invaluable for tracking down performance issues and rendering bugs.
 
@@ -345,7 +345,7 @@ void main()
 
 **Use PBR materials.** Physically-based materials look consistent across all lighting conditions. It's much easier to get good results than with ad-hoc material models.
 
-**Bake static lighting.** If something never moves, bake its lighting. Real-time lighting is expensive—baked lighting is essentially free at runtime.
+**Bake static lighting.** If something never moves, bake its lighting. Real-time lighting is expensive. Baked lighting is essentially free at runtime.
 
 **Minimize state changes.** Group rendering by material and shader. Every state change (switching shaders, changing textures) has overhead.
 

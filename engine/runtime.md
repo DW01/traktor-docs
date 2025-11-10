@@ -11,17 +11,17 @@ nav_order: 2
 
 The Runtime System is your game's conductor, orchestrating all the moving pieces to create a cohesive experience. While the engine provides powerful systems for graphics, physics, and audio, the Runtime System is what ties them all together and keeps everything running in harmony.
 
-Think of it like running a theater production: you have lighting technicians, sound engineers, actors, and stagehands. Each group does their job, but someone needs to coordinate them—calling cues, managing scene changes, and ensuring everything happens in the right order. That's the Runtime System.
+Think of it like running a theater production: you have lighting technicians, sound engineers, actors, and stagehands. Each group does their job, but someone needs to coordinate them. Calling cues, managing scene changes, and ensuring everything happens in the right order. That's the Runtime System.
 
 ![TODO: Diagram showing the runtime architecture with Application at the top, Servers in the middle (Render, Physics, Audio, Script, etc.), and States/Stages at the bottom]
 
 ## How It All Fits Together
 
-The Runtime System uses a **server-based architecture**. Instead of having one monolithic game loop that handles everything, different subsystems are implemented as "servers"—independent managers that each handle one domain. The **RenderServer** handles graphics, the **PhysicsServer** manages physics simulation, the **AudioServer** controls sound, and so on.
+The Runtime System uses a **server-based architecture**. Instead of having one monolithic game loop that handles everything, different subsystems are implemented as "servers". Independent managers that each handle one domain. The **RenderServer** handles graphics, the **PhysicsServer** manages physics simulation, the **AudioServer** controls sound, and so on.
 
-Your game's content is organized into **Stages**—high-level states like "Main Menu", "Level 1", or "Loading Screen." Each stage contains **Layers**, which are ordered groups of entities and logic. Think of layers like transparencies stacked on an overhead projector: the background layer, the gameplay layer, the UI layer, each rendered in order to create the final image.
+Your game's content is organized into **Stages**. High-level states like "Main Menu", "Level 1", or "Loading Screen." Each stage contains **Layers**, which are ordered groups of entities and logic. Think of layers like transparencies stacked on an overhead projector: the background layer, the gameplay layer, the UI layer, each rendered in order to create the final image.
 
-For more complex scenarios where you need fine-grained control, you can use **States** instead—lower-level constructs that give you complete control over the update cycle. But for most game development, Stages are the way to go: they're data-driven, editable in the editor, and much easier to iterate on.
+For more complex scenarios where you need fine-grained control, you can use **States** instead. Lower-level constructs that give you complete control over the update cycle. But for most game development, Stages are the way to go: they're data-driven, editable in the editor, and much easier to iterate on.
 
 ## Application Architecture
 

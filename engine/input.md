@@ -9,9 +9,9 @@ nav_order: 6
 
 # Input System - The Bridge Between Player and Game
 
-Input is the conversation between player and game. Every jump, every turn, every action starts with the player pressing a button or moving a stick. Without responsive, reliable input handling, even the most beautiful game feels sluggish and frustrating. Players notice input lag immediately—it breaks the illusion that they're actually controlling the character.
+Input is the conversation between player and game. Every jump, every turn, every action starts with the player pressing a button or moving a stick. Without responsive, reliable input handling, even the most beautiful game feels sluggish and frustrating. Players notice input lag immediately. It breaks the illusion that they're actually controlling the character.
 
-Traktor's input system provides a unified way to handle input from any device: keyboard and mouse for PC players, gamepads for console-style play, and touch screens for mobile devices. More importantly, it handles all the details that make input feel good—dead zones on analog sticks so slight drift doesn't move your character, delta tracking for smooth mouse look, and frame-by-frame state so you can distinguish between "held down" and "just pressed."
+Traktor's input system provides a unified way to handle input from any device: keyboard and mouse for PC players, gamepads for console-style play, and touch screens for mobile devices. More importantly, it handles all the details that make input feel good. Dead zones on analog sticks so slight drift doesn't move your character, delta tracking for smooth mouse look, and frame-by-frame state so you can distinguish between "held down" and "just pressed."
 
 Think of the input system as the translator that turns physical button presses into meaningful game events. Whether a player presses W on the keyboard, pushes up on an analog stick, or taps an on-screen button, you can map all of those to a single "move forward" action. This means players can use whatever control scheme feels natural to them, and you don't have to write separate code for each input device.
 
@@ -90,7 +90,7 @@ input:isKeyDown("Enter")
 input:isKeyDown("Escape")
 ```
 
-**isKeyDown** is for continuous actions like movement—while W is held, keep moving forward. **wasKeyPressed** is for discrete actions like jumping—you want to jump once per press, not every frame while the button is held. **wasKeyReleased** is for actions that happen when you let go, like releasing a charged shot.
+**isKeyDown** is for continuous actions like movement. While W is held, keep moving forward. **wasKeyPressed** is for discrete actions like jumping. You want to jump once per press, not every frame while the button is held. **wasKeyReleased** is for actions that happen when you let go, like releasing a charged shot.
 
 ## Mouse Input: Position, Movement, and Clicks
 
@@ -163,7 +163,7 @@ Always check if a gamepad is connected before reading its input. Players can con
 
 **Analog sticks** return values from -1.0 to 1.0 on each axis. You should apply a **dead zone** (ignoring small values near zero) to prevent stick drift from causing unwanted movement. A typical dead zone is around 0.1 to 0.2.
 
-**Vibration** (rumble) provides force feedback. Use it sparingly—subtle rumble on impacts and explosions adds immersion, but constant rumble is annoying and drains battery.
+**Vibration** (rumble) provides force feedback. Use it sparingly. Subtle rumble on impacts and explosions adds immersion, but constant rumble is annoying and drains battery.
 
 ## Input Mapping: Flexibility for Players
 
@@ -318,7 +318,7 @@ end
 
 **Apply dead zones to analog sticks.** Most controllers have some stick drift. A dead zone around 0.1 to 0.2 prevents this from causing unwanted input.
 
-**Use "just pressed" for discrete actions.** Jumping, shooting, opening menus—these should trigger once per button press, not every frame while held.
+**Use "just pressed" for discrete actions.** Jumping, shooting, opening menus. These should trigger once per button press, not every frame while held.
 
 **Normalize diagonal movement.** When a player presses W+D simultaneously, the movement vector's length is √2. Normalize it so diagonal movement isn't faster than cardinal movement.
 

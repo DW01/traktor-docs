@@ -9,15 +9,15 @@ nav_order: 5
 
 # Scripting with Lua
 
-Scripting in Traktor is where your game comes to life. While the engine provides systems for rendering, physics, and audio, it's your Lua scripts that define what makes your game unique—the gameplay rules, character behaviors, UI interactions, and everything that makes players say "just one more level."
+Scripting in Traktor is where your game comes to life. While the engine provides systems for rendering, physics, and audio, it's your Lua scripts that define what makes your game unique. The gameplay rules, character behaviors, UI interactions, and everything that makes players say "just one more level."
 
-Traktor uses **Lua 5.x** as its scripting language. If you've never used Lua before, don't worry—it's one of the easiest programming languages to learn, and it's been battle-tested in countless games from World of Warcraft to Angry Birds.
+Traktor uses **Lua 5.x** as its scripting language. If you've never used Lua before, don't worry. It's one of the easiest programming languages to learn, and it's been battle-tested in countless games from World of Warcraft to Angry Birds.
 
 ![TODO: Screenshot of the Lua script debugger showing breakpoints, variable inspection, and call stack]
 
 ## Why Scripts Matter
 
-Think of C++ as the engine's muscle—it's fast, efficient, and handles the heavy lifting like rendering thousands of polygons or simulating complex physics. Scripts are the brain—they make decisions, respond to player input, and implement game rules that would be tedious to hard-code in C++.
+Think of C++ as the engine's muscle - it's fast, efficient, and handles the heavy lifting like rendering thousands of polygons or simulating complex physics. Scripts are the brain - they make decisions, respond to player input, and implement game rules that would be tedious to hard-code in C++.
 
 The best part? Scripts hot-reload instantly. Change your code, save the file, and see the results immediately in your running game. No recompilation, no waiting, no losing your place in the level you're testing.
 
@@ -62,7 +62,7 @@ Before we dive into writing scripts, there's one crucial line you need at the to
 import(traktor)  -- Required to access world, physics, render, animation, etc.
 ```
 
-Without this import, you won't have access to the engine's namespaces like `world`, `physics`, `render`, `animation`, `sound`, `spray`, and many others. It's like trying to use a library without importing it first—the functions simply won't be available.
+Without this import, you won't have access to the engine's namespaces like `world`, `physics`, `render`, `animation`, `sound`, `spray`, and many others. It's like trying to use a library without importing it first. The functions simply won't be available.
 
 ## How Scripts Attach to Your Game
 

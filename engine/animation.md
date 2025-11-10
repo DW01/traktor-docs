@@ -9,7 +9,7 @@ nav_order: 9
 
 # Skeletal Animation - Bringing Characters to Life
 
-Animation is what transforms static 3D models into living, breathing characters. A character standing perfectly still might be technically impressive, but it feels lifeless. Add a subtle breathing animation, a shift of weight, a head turn—suddenly, they're alive. Animation is the difference between a mannequin and a performance.
+Animation is what transforms static 3D models into living, breathing characters. A character standing perfectly still might be technically impressive, but it feels lifeless. Add a subtle breathing animation, a shift of weight, a head turn. Suddenly, they're alive. Animation is the difference between a mannequin and a performance.
 
 Traktor's skeletal animation system gives you the tools to create convincing character motion. Think of skeletal animation like puppetry: a character has an internal "skeleton" of interconnected bones, and you animate those bones. The character's mesh (skin) follows the bones automatically, deforming naturally as the skeleton moves. This is far more efficient and flexible than animating every vertex manually.
 
@@ -40,13 +40,13 @@ skeleton->setPoseController(poseController);
 entity->setComponent(skeleton);
 ```
 
-The **pose controller** determines what pose the skeleton is in at any given moment—whether that's playing a single animation, blending between multiple animations based on a state graph, or solving IK constraints.
+The **pose controller** determines what pose the skeleton is in at any given moment. Whether that's playing a single animation, blending between multiple animations based on a state graph, or solving IK constraints.
 
 ## Controlling Animation
 
 ### Simple Animation Playback
 
-For straightforward cases—a spinning prop, a looping idle animation—the **SimpleAnimationController** does exactly what it says. Give it an animation, tell it whether to loop, and it plays:
+For straightforward cases. A spinning prop, a looping idle animation. The **SimpleAnimationController** does exactly what it says. Give it an animation, tell it whether to loop, and it plays:
 
 ```cpp
 Ref<SimpleAnimationController> controller = new SimpleAnimationController();
@@ -57,7 +57,7 @@ controller->setPlaybackSpeed(1.0f);
 
 ### Animation State Graphs: The Choreographer's Blueprint
 
-Real character animation is complex. A player character might have dozens of animations: idle, walk, run, jump, land, attack, hit reactions, death animations. You need to transition smoothly between them based on gameplay conditions—speed, ground contact, input, health. Managing this with manual code becomes a nightmare fast.
+Real character animation is complex. A player character might have dozens of animations: idle, walk, run, jump, land, attack, hit reactions, death animations. You need to transition smoothly between them based on gameplay conditions. Speed, ground contact, input, health. Managing this with manual code becomes a nightmare fast.
 
 That's what **animation state graphs** solve. Think of a state graph as a choreographer's blueprint: it defines a set of animation states (idle, walk, run) and the rules for transitioning between them (walk when speed > 0.1, run when speed > 5.0). The system handles the transitions, blending smoothly from one animation to the next.
 
@@ -135,7 +135,7 @@ The visual editor makes it easy to see the flow of your animation logic at a gla
 
 ## Inverse Kinematics: Solving for Motion
 
-Sometimes you don't want to play back a pre-made animation—you want to solve for a specific goal. **Inverse Kinematics (IK)** is the answer. Instead of specifying every bone rotation, you specify a target position, and IK solves the bone chain to reach that position.
+Sometimes you don't want to play back a pre-made animation. You want to solve for a specific goal. **Inverse Kinematics (IK)** is the answer. Instead of specifying every bone rotation, you specify a target position, and IK solves the bone chain to reach that position.
 
 ```cpp
 // C++ - Create IK component
@@ -210,7 +210,7 @@ entity->setComponent(path);
 
 For simple procedural animations, Traktor provides several utility components:
 
-**RotatorComponent** creates continuous rotation—spinning fans, rotating platforms, orbiting objects:
+**RotatorComponent** creates continuous rotation. Spinning fans, rotating platforms, orbiting objects:
 
 ```cpp
 Ref<RotatorComponent> rotator = new RotatorComponent();
@@ -219,15 +219,15 @@ rotator->setSpeed(1.0f);  // Radians per second
 entity->setComponent(rotator);
 ```
 
-**PendulumComponent** creates swinging pendulum motion—hanging lights, chains, bells.
+**PendulumComponent** creates swinging pendulum motion. Hanging lights, chains, bells.
 
-**WobbleComponent** adds shake and wobble effects—jelly-like objects, earthquake effects.
+**WobbleComponent** adds shake and wobble effects. Jelly-like objects, earthquake effects.
 
-**OrientateComponent** smoothly orients an entity toward a target—turrets tracking players, eyes following movement.
+**OrientateComponent** smoothly orients an entity toward a target. Turrets tracking players, eyes following movement.
 
 ### Flocking and Swarms
 
-The **BoidsComponent** simulates flocking behavior for groups of entities—birds, fish schools, insects. Individual entities follow simple rules (stay close to neighbors, match their direction, avoid collisions), creating emergent, organic group motion:
+The **BoidsComponent** simulates flocking behavior for groups of entities. Birds, fish schools, insects. Individual entities follow simple rules (stay close to neighbors, match their direction, avoid collisions), creating emergent, organic group motion:
 
 ```cpp
 Ref<BoidsComponent> boids = new BoidsComponent();
@@ -253,7 +253,7 @@ class Animation
 };
 ```
 
-The **Skeleton** class defines the bone hierarchy—parent-child relationships, bind poses, and joint names:
+The **Skeleton** class defines the bone hierarchy. Parent-child relationships, bind poses, and joint names:
 
 ```cpp
 class Skeleton
@@ -266,7 +266,7 @@ class Skeleton
 };
 ```
 
-You typically don't work with these classes directly—they're managed by the animation system—but understanding the structure helps when debugging or creating custom animation tools.
+You typically don't work with these classes directly. They're managed by the animation system. But understanding the structure helps when debugging or creating custom animation tools.
 
 ## Best Practices
 
@@ -278,7 +278,7 @@ You typically don't work with these classes directly—they're managed by the an
 
 **Cache controllers.** Don't create new pose controllers every frame. Create them once, store them, and reuse them.
 
-**Use IK sparingly.** IK is more expensive than playing back keyframed animation. Use it where it provides clear benefit—foot placement, hand targets—not everywhere.
+**Use IK sparingly.** IK is more expensive than playing back keyframed animation. Use it where it provides clear benefit. Foot placement, hand targets. Not everywhere.
 
 **Blend with purpose.** Animation blending is powerful but can look floaty if overused. Short, snappy transitions often feel more responsive than long blends.
 

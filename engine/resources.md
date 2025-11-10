@@ -9,15 +9,15 @@ nav_order: 7
 
 # Resource Management - Your Game's Asset Library
 
-Imagine you're building a massive game world with thousands of 3D models, textures, sounds, and scripts. You can't load everything into memory at once—that would consume gigabytes and make startup painfully slow. But you also can't manually track what's loaded, when to load it, and when to unload it. That's a recipe for crashes, hitches, and headaches.
+Imagine you're building a massive game world with thousands of 3D models, textures, sounds, and scripts. You can't load everything into memory at once. That would consume gigabytes and make startup painfully slow. But you also can't manually track what's loaded, when to load it, and when to unload it. That's a recipe for crashes, hitches, and headaches.
 
 This is where Traktor's **Resource system** shines. Think of it as a smart librarian for your game's assets. You ask for a resource by name, and the system handles all the details: finding it on disk, loading it into memory, caching it so you don't load it twice, and even automatically reloading it when you make changes during development. The system is lazy (resources only load when actually needed), efficient (shared resources are loaded once), and automatic (reference counting handles cleanup).
 
-The resource system manages everything your game needs: meshes, textures, materials, sounds, scripts, animations, and more. It's one of those invisible systems that, when done right, you never think about—it just works.
+The resource system manages everything your game needs: meshes, textures, materials, sounds, scripts, animations, and more. It's one of those invisible systems that, when done right, you never think about. It just works.
 
 ## The Proxy Pattern: Claim Tickets for Resources
 
-At the heart of the resource system is the **Proxy** pattern. Think of a `Proxy<T>` as a claim ticket or voucher. When you request a resource, you get a proxy immediately—it's lightweight and fast. The actual resource might not be loaded yet, but that's okay. When you try to use the resource, the proxy automatically loads it if needed.
+At the heart of the resource system is the **Proxy** pattern. Think of a `Proxy<T>` as a claim ticket or voucher. When you request a resource, you get a proxy immediately. It's lightweight and fast. The actual resource might not be loaded yet, but that's okay. When you try to use the resource, the proxy automatically loads it if needed.
 
 ```cpp
 // Declare resource proxy
@@ -172,7 +172,7 @@ mesh2 = nullptr;
 mesh1 = nullptr;
 ```
 
-This is automatic and safe. You never need to manually unload resources—when they're no longer referenced, the system takes care of cleanup.
+This is automatic and safe. You never need to manually unload resources. When they're no longer referenced, the system takes care of cleanup.
 
 ## Hot Reloading: Instant Iteration
 
@@ -185,7 +185,7 @@ Here's how it works:
 4. The asset pipeline rebuilds the asset
 5. The running game automatically reloads the resource
 
-No restart, no manual reload—just instant feedback. This dramatically speeds up iteration.
+No restart, no manual reload. Just instant feedback. This dramatically speeds up iteration.
 
 You can also manually trigger reloads:
 
@@ -240,7 +240,7 @@ resourceManager->setMaxCacheSize(512);
 resourceManager->releaseUnused();
 ```
 
-This is useful on memory-constrained platforms or when transitioning between levels—clear unused resources to make room for the next batch.
+This is useful on memory-constrained platforms or when transitioning between levels. Clear unused resources to make room for the next batch.
 
 ### Preloading Resources
 
@@ -267,7 +267,7 @@ Preloading loads everything up front so there are no surprises later.
 
 **Release unused resources.** Periodically call `releaseUnused()` to free memory from resources no longer referenced.
 
-**Check validity before use.** Always check if a proxy is valid (non-null) before accessing the resource—it might still be loading.
+**Check validity before use.** Always check if a proxy is valid (non-null) before accessing the resource. It might still be loading.
 
 **Use async loading for large assets.** Synchronous loading can freeze your game. Async loading keeps things smooth.
 

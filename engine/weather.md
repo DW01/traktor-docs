@@ -9,7 +9,7 @@ nav_order: 16
 
 # Weather System - Atmosphere and Immersion
 
-Weather transforms a game world from a static backdrop into a living, breathing environment. A beautiful sky gradient at sunset, falling rain or snow, dramatic storm clouds—these atmospheric touches set mood and make your world feel alive.
+Weather transforms a game world from a static backdrop into a living, breathing environment. A beautiful sky gradient at sunset, falling rain or snow, dramatic storm clouds. These atmospheric touches set mood and make your world feel alive.
 
 Traktor's weather system provides two editor-configured components:
 
@@ -23,7 +23,7 @@ Traktor's weather system provides two editor-configured components:
 
 ## SkyComponent: Rendering the Sky
 
-Traditional skyboxes are static images wrapped around your scene. Traktor's **SkyComponent** is more flexible—it uses a shader-based approach with configurable colors and atmospheric effects.
+Traditional skyboxes are static images wrapped around your scene. Traktor's **SkyComponent** is more flexible. It uses a shader-based approach with configurable colors and atmospheric effects.
 
 The SkyComponent provides these parameters (configured in the editor):
 

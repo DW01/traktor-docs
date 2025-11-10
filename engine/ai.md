@@ -9,9 +9,9 @@ nav_order: 15
 
 # AI System - Teaching Characters to Navigate
 
-Game AI creates the illusion that non-player characters think, plan, and react to the world around them. An enemy that patrols a hallway, chases you when spotted, and takes cover when under fire feels intelligent—even though it's following simple rules. The foundation of most game AI is **navigation**: characters need to know where they can walk, how to get from point A to point B, and how to move around obstacles without getting stuck.
+Game AI creates the illusion that non-player characters think, plan, and react to the world around them. An enemy that patrols a hallway, chases you when spotted, and takes cover when under fire feels intelligent. Even though it's following simple rules. The foundation of most game AI is **navigation**: characters need to know where they can walk, how to get from point A to point B, and how to move around obstacles without getting stuck.
 
-Traktor's AI system is built on **Recast/Detour**, a battle-tested library used in countless commercial games. It generates **navigation meshes** (navmeshes)—simplified representations of walkable surfaces in your level—and provides **pathfinding** to calculate routes from any start point to any destination. The system handles all the complexity: finding valid paths, steering around obstacles, handling different agent sizes, and doing it all asynchronously so pathfinding doesn't freeze your game.
+Traktor's AI system is built on **Recast/Detour**, a battle-tested library used in countless commercial games. It generates **navigation meshes** (navmeshes). Simplified representations of walkable surfaces in your level. And provides **pathfinding** to calculate routes from any start point to any destination. The system handles all the complexity: finding valid paths, steering around obstacles, handling different agent sizes, and doing it all asynchronously so pathfinding doesn't freeze your game.
 
 Think of a navigation mesh like a simplified map of your level that AI characters can read. Instead of the full geometric complexity, the navmesh shows only the walkable floor areas, taking into account agent size (can they fit through doorways?), slope (can they climb stairs?), and obstacles (walls, furniture, cliffs). Characters query the navmesh to find paths, pick random destinations for wandering, or find the closest valid position if they're spawned inside a wall.
 
@@ -19,7 +19,7 @@ Think of a navigation mesh like a simplified map of your level that AI character
 
 ## Understanding Navigation Meshes
 
-A **navigation mesh** (navmesh) is a 3D mesh that represents walkable surfaces in your game world. Unlike your visual level geometry, which might have millions of triangles, a navmesh has far fewer polygons—just enough to represent where characters can walk.
+A **navigation mesh** (navmesh) is a 3D mesh that represents walkable surfaces in your game world. Unlike your visual level geometry, which might have millions of triangles, a navmesh has far fewer polygons. Just enough to represent where characters can walk.
 
 When you generate a navmesh, you configure **agent parameters** that define the size and capabilities of the characters who will use it:
 
@@ -31,7 +31,7 @@ When you generate a navmesh, you configure **agent parameters** that define the 
 
 **Max slope** limits how steep a surface can be. Gentle ramps are walkable, but cliffs are not.
 
-The navmesh generator uses these parameters to "rasterize" your level geometry, figuring out what's walkable and what's not. The result is a simplified mesh that's perfect for pathfinding—small enough to be fast, detailed enough to be accurate.
+The navmesh generator uses these parameters to "rasterize" your level geometry, figuring out what's walkable and what's not. The result is a simplified mesh that's perfect for pathfinding. Small enough to be fast, detailed enough to be accurate.
 
 ### Creating a Navigation Mesh
 
@@ -91,7 +91,7 @@ if (queryResult->isReady())
 
 The `MoveQueryResult` becomes ready once the path is calculated. Then you repeatedly call `moveQuery->update()` each frame, passing in your current position. It returns the next waypoint to move toward. When you reach the destination, `update()` returns false.
 
-The third parameter (0.5f in the example) is the "path following distance"—how far ahead along the path to look for the next waypoint. Larger values make the character cut corners more aggressively; smaller values make them follow the path more precisely.
+The third parameter (0.5f in the example) is the "path following distance". How far ahead along the path to look for the next waypoint. Larger values make the character cut corners more aggressively; smaller values make them follow the path more precisely.
 
 ### NavMesh Queries
 
@@ -108,7 +108,7 @@ if (navMesh->findClosestPoint(searchFrom, closestPoint))
 }
 ```
 
-**Find random point on navmesh:** Perfect for wandering behavior—pick a random destination and walk to it:
+**Find random point on navmesh:** Perfect for wandering behavior. Pick a random destination and walk to it:
 
 ```cpp
 Vector4 randomPoint;
@@ -353,7 +353,7 @@ end
 
 **Use different navmeshes for different agent sizes.** A human-sized navmesh won't work for a large vehicle or a tiny critter. Generate separate navmeshes with different agent parameters for different character types.
 
-**Handle path failures gracefully.** If pathfinding fails (no valid path exists), have a fallback—maybe the AI stands still, wanders randomly, or tries a different target.
+**Handle path failures gracefully.** If pathfinding fails (no valid path exists), have a fallback. Maybe the AI stands still, wanders randomly, or tries a different target.
 
 **Visualize during development.** Enable navmesh visualization in the editor to see exactly where AI can walk. If characters get stuck, the navmesh might be missing connections or have incorrect parameters.
 
@@ -423,7 +423,7 @@ For dynamic obstacles (moving platforms, destructible walls), you might need to 
 
 ### Off-Mesh Links
 
-For special connections (jump down from a ledge, climb a ladder), Recast/Detour supports "off-mesh links"—manual connections between navmesh areas. This is configured during navmesh generation.
+For special connections (jump down from a ledge, climb a ladder), Recast/Detour supports "off-mesh links". Manual connections between navmesh areas. This is configured during navmesh generation.
 
 ## See Also
 

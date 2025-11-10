@@ -21,7 +21,7 @@ The architecture is designed around four key principles:
 
 **Modularity** means each system has clear boundaries and responsibilities. The physics system doesn't need to know about rendering internals, and the audio system doesn't care about networking details. This separation makes the code easier to understand and maintain.
 
-**Performance** is baked into every design decision. From reference counting to SIMD math operations, the engine is built to run fast on real hardware. But it achieves this without sacrificing clarity—you can still read and understand the code.
+**Performance** is baked into every design decision. From reference counting to SIMD math operations, the engine is built to run fast on real hardware. But it achieves this without sacrificing clarity. You can still read and understand the code.
 
 **Flexibility** comes from data-driven design. Rather than hard-coding game logic, you define behavior through assets and scripts. This means designers can iterate quickly without waiting for programmers to recompile.
 
@@ -60,7 +60,7 @@ This approach eliminates entire classes of bugs. You don't have to track who "ow
 
 #### What's in the Core Toolbox?
 
-**Containers** are the data structures you'll use everywhere. Traktor provides `AlignedVector<T>` for arrays with specific memory alignment (important for SIMD optimization), `SmallMap<K, V>` for efficient lookups, `RefArray<T>` for collections of reference-counted objects, and `RefSet<T>` for unique collections. These aren't just wrappers around STL—they're optimized for the access patterns common in game engines.
+**Containers** are the data structures you'll use everywhere. Traktor provides `AlignedVector<T>` for arrays with specific memory alignment (important for SIMD optimization), `SmallMap<K, V>` for efficient lookups, `RefArray<T>` for collections of reference-counted objects, and `RefSet<T>` for unique collections. These aren't just wrappers around STL. They're optimized for the access patterns common in game engines.
 
 **Threading** support is crucial for modern games that need to use all available CPU cores. The Core provides classes like `Thread`, `Semaphore`, and `CriticalSection`, but most importantly, it offers a `JobQueue` system for distributing parallel work efficiently. Rather than spawning threads manually, you submit jobs that get executed by a managed thread pool.
 
@@ -84,7 +84,7 @@ This layer is where things get interesting. It includes specialized systems that
 
 The **Animation** module handles skeletal animation, inverse kinematics (IK), ragdoll physics, and cloth simulation. The **Physics** module provides rigid body dynamics and character controllers using either Jolt or Bullet as the backend. The **Render** module implements the Vulkan-based rendering pipeline with support for modern features like ray tracing.
 
-The **World** module is particularly important—it implements the entity-component system that ties everything together. Entities are game objects, and components define their behavior and appearance. This pattern keeps code modular and makes it easy to compose different behaviors.
+The **World** module is particularly important. It implements the entity-component system that ties everything together. Entities are game objects, and components define their behavior and appearance. This pattern keeps code modular and makes it easy to compose different behaviors.
 
 Other key modules include **Resource** for asset loading, **Script** for Lua integration, **Sound** for multi-channel audio, **Spark** (which powers the in-game UI system), **Spray** for GPU-accelerated particle effects, **Terrain** for large outdoor environments, **Theater** for cinematic cutscenes, and **Weather** for dynamic sky and precipitation systems.
 
@@ -107,7 +107,7 @@ The runtime defines an **Application** class that manages the game's lifecycle. 
 
 This server pattern gives you clean extension points. Want to add telemetry? Create a telemetry server. Need custom networking? Implement a custom network server.
 
-The runtime also introduces **States** (sometimes called Stages in the codebase). States represent high-level modes of your application—think main menu, gameplay, loading screen, or pause menu. Each state can create, update, and destroy its own set of entities and resources. This makes it easy to manage transitions between different parts of your game.
+The runtime also introduces **States** (sometimes called Stages in the codebase). States represent high-level modes of your application. Think main menu, gameplay, loading screen, or pause menu. Each state can create, update, and destroy its own set of entities and resources. This makes it easy to manage transitions between different parts of your game.
 
 ### Layer 4: Editor Framework
 
@@ -129,7 +129,7 @@ The top layer is your game code and content. This includes:
 - **Pipeline Extensions** for custom asset processing
 - **Runtime Plugins** that extend the engine's capabilities
 
-Your game leverages all the layers below it. You don't have to think about Vulkan rendering or physics integration—those concerns are handled by lower layers. You focus on what makes your game unique.
+Your game leverages all the layers below it. You don't have to think about Vulkan rendering or physics integration. Those concerns are handled by lower layers. You focus on what makes your game unique.
 
 ## How Data Flows Through the System
 
@@ -214,7 +214,7 @@ Traktor is designed to be extended. Here are the main extension points:
 
 **Custom Resources** add new asset types. Implement `IResource` for the runtime data and `IResourceFactory` to create instances. The editor pipeline system can then process your custom assets and the resource manager will load them.
 
-**Custom Shaders** are created using the Shader Graph editor. No C++ code required—you visually connect nodes to define material behavior. The shader compiler generates optimized GLSL that runs on the GPU.
+**Custom Shaders** are created using the Shader Graph editor. No C++ code required. You visually connect nodes to define material behavior. The shader compiler generates optimized GLSL that runs on the GPU.
 
 **Editor Plugins** can add new windows, asset types, importers, and tools to the editor. Plugins are self-contained DLLs that register themselves with the plugin system.
 
@@ -257,7 +257,7 @@ Traktor is designed to be fast, but it achieves performance through good design 
 
 **SIMD Math:** The math library automatically uses SIMD instructions when available. `Vector4` operations can process four floats in parallel. Matrices use SIMD for transformations.
 
-**Data-Driven Overhead:** The data-driven approach isn't just about flexibility—it's about performance. Scripts and data files can be hot-reloaded without restarting, making iteration fast. The runtime loads only the data it needs, keeping memory usage low.
+**Data-Driven Overhead:** The data-driven approach isn't just about flexibility. It's about performance. Scripts and data files can be hot-reloaded without restarting, making iteration fast. The runtime loads only the data it needs, keeping memory usage low.
 
 The philosophy is: make the common case fast, profile before optimizing, and write clear code first. Premature optimization is still the root of all evil.
 
@@ -271,7 +271,7 @@ Now that you understand the architecture, you're ready to dive deeper into speci
 - **[Scripting](scripting/)** shows how to write gameplay code in Lua
 - **[Rendering](render/)** details the Vulkan-based graphics pipeline
 
-The best way to learn is by doing. Open one of the sample projects (like kartong or kobolt), explore the code, and start experimenting. The engine is designed to be readable—when in doubt, check the source code!
+The best way to learn is by doing. Open one of the sample projects (like kartong or kobolt), explore the code, and start experimenting. The engine is designed to be readable. When in doubt, check the source code!
 
 ## Key Takeaways
 

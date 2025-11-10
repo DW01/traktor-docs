@@ -43,7 +43,7 @@ git clone --recursive https://github.com/apistol78/traktor.git
 cd traktor
 ```
 
-The `--recursive` flag is important—it fetches all submodules (third-party libraries) that Traktor depends on.
+The `--recursive` flag is important. It fetches all submodules (third-party libraries) that Traktor depends on.
 
 **2. Build for your platform:**
 
@@ -61,7 +61,7 @@ Once you have the editor running, it's time to create a project.
 
 ### Creating a New Workspace
 
-A "workspace" in Traktor is your game project—it contains all your assets, scenes, scripts, and settings.
+A "workspace" in Traktor is your game project. It contains all your assets, scenes, scripts, and settings.
 
 1. **Launch the Traktor editor** - Run `Traktor.Editor.App.exe` (Windows) or `Traktor.Editor.App` (Linux)
 2. **Create a new workspace** - Go to **File → New Workspace**
@@ -86,7 +86,7 @@ MyFirstGame/
 └── info/                     # Additional project metadata
 ```
 
-**Source** is where you work—all your scenes, materials, scripts, and textures go here. This is what you edit and version control.
+**Source** is where you work. All your scenes, materials, scripts, and textures go here. This is what you edit and version control.
 
 **Output** contains the optimized runtime assets. The pipeline generates these automatically when you save changes. Don't edit these files manually.
 
@@ -119,7 +119,7 @@ The scene asset now appears in the Database, but you haven't opened it yet.
 
 ### Step 2: Open the Scene Editor
 
-**Double-click MyScene** in the Database. The first time you open a scene, the editor builds some internal assets—this takes a few seconds. Once ready, the Scene Editor opens, showing an empty, dark viewport. Don't worry, this is normal—there's no lighting yet.
+**Double-click MyScene** in the Database. The first time you open a scene, the editor builds some internal assets. This takes a few seconds. Once ready, the Scene Editor opens, showing an empty, dark viewport. Don't worry, this is normal. There's no lighting yet.
 
 ![TODO: Screenshot showing the empty Scene Editor viewport with the dark scene]
 
@@ -140,7 +140,7 @@ Your scene should now be visible with basic lighting. You'll see the sky gradien
 
 ### Step 4: Add Geometry with CSG
 
-Traktor doesn't have built-in primitive shapes like cubes or spheres in the editor menu. Instead, it uses **CSG (Constructive Solid Geometry)**—a system for building meshes from basic shapes using boolean operations.
+Traktor doesn't have built-in primitive shapes like cubes or spheres in the editor menu. Instead, it uses **CSG (Constructive Solid Geometry)**. A system for building meshes from basic shapes using boolean operations.
 
 Let's create a simple cube using CSG:
 
@@ -163,7 +163,7 @@ Congratulations! You've built Traktor from source, created a project, and made y
 
 **Learn the workflow** - Read the [Editor Documentation](../editor/) to understand the Database, Pipeline, Scene Editor, and deployment tools. The editor is your primary workspace, so mastering it will make development much faster.
 
-**Understand the architecture** - The [Architecture](../engine/architecture/) guide explains how Traktor is organized—the module system, memory management, and core concepts. This helps you understand how everything fits together.
+**Understand the architecture** - The [Architecture](../engine/architecture/) guide explains how Traktor is organized. The module system, memory management, and core concepts. This helps you understand how everything fits together.
 
 **Add gameplay logic** - The [Scripting](../engine/scripting/) guide teaches you how to write Lua scripts for gameplay. You'll learn about components, the update loop, input handling, and more.
 
